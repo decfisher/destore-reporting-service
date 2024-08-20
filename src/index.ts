@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import express, { Request, Response } from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import { TransactionDao } from './dao/TransactionDao';
 import { TransactionModel } from './models/transaction';
@@ -28,7 +28,15 @@ const transactionController = new TransactionController(transactionDao);
 // Initialise application server
 const app = express();
 
-app.get('/transactions/all', transactionController.getAll);
+app.get('/total-revenue', transactionController.getTotalRevenue);
+
+app.get('/most-popular-products', transactionController.getMostPopularProducts);
+
+app.get('/total-revenue-by-product', transactionController.getTotalRevenueByProduct);
+
+app.get('/discount-usage', transactionController.getDiscountUsage);
+
+app.get('/loyalty-usage', transactionController.getLoyaltyUsage);
 
 // Start the server
 app.listen(port, () => {

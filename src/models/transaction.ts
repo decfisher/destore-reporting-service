@@ -1,5 +1,10 @@
 import { Document, model, Schema } from 'mongoose';
 
+export interface CountTransationsBetweenDatesRequest {
+    start: Date;
+    end: Date;
+}
+
 export interface Transaction {
     id: string;
     customer_id: string;
