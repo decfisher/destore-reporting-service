@@ -28,13 +28,6 @@ export interface ITransaction {
     products_purchased: Product[];
 }
 
-export enum LoyaltyType {
-    NO_LOYALTY = 'NO_LOYALTY',
-    FIFTY_PERCENT_OFF = 'FIFTY_PERCENT_OFF',
-    ONE_PRODUCT_FREE = 'ONE_ITEM_FREE',
-    FREE_PRODUCT_NEXT_PURCHASE = 'FREE_PRODUCT_NEXT_PURCHASE',
-}
-
 export interface ITransactionDocument extends ITransaction, Document {}
 
 export interface IProduct {

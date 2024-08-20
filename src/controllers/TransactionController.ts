@@ -11,10 +11,12 @@ export class TransactionController {
     getTotalRevenue = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { start, end } = req.query;
-            const startDate = new Date(start as string).toISOString();
-            const endDate = new Date(end as string).toISOString();
+            const startDate = new Date(start as string);
+            const endDate = new Date(end as string);
 
-            const totalRevenue = await this.transactionDao.getTotalRevenue(startDate, endDate);
+            if (endDate < startDate) throw new Error('End date must be greater than start date');
+
+            const totalRevenue = await this.transactionDao.getTotalRevenue(startDate.toISOString(), endDate.toISOString());
 
             res.status(200).json({
                 start: startDate,
@@ -29,10 +31,12 @@ export class TransactionController {
     getMostPopularProducts = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { start, end } = req.query;
-            const startDate = new Date(start as string).toISOString();
-            const endDate = new Date(end as string).toISOString();
+            const startDate = new Date(start as string);
+            const endDate = new Date(end as string);
 
-            const mostPopularProducts = await this.transactionDao.getMostPopularProducts(startDate, endDate);
+            if (endDate < startDate) throw new Error('End date must be greater than start date');
+
+            const mostPopularProducts = await this.transactionDao.getMostPopularProducts(startDate.toISOString(), endDate.toISOString());
 
             res.status(200).json({
                 start: startDate,
@@ -47,10 +51,12 @@ export class TransactionController {
     getTotalRevenueByProduct = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { start, end } = req.query;
-            const startDate = new Date(start as string).toISOString();
-            const endDate = new Date(end as string).toISOString();
+            const startDate = new Date(start as string);
+            const endDate = new Date(end as string);
 
-            const totalRevenueByProduct = await this.transactionDao.getTotalRevenueByProduct(startDate, endDate);
+            if (endDate < startDate) throw new Error('End date must be greater than start date');
+
+            const totalRevenueByProduct = await this.transactionDao.getTotalRevenueByProduct(startDate.toISOString(), endDate.toISOString());
 
             res.status(200).json({
                 start: startDate,
@@ -65,10 +71,12 @@ export class TransactionController {
     getDiscountUsage = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { start, end } = req.query;
-            const startDate = new Date(start as string).toISOString();
-            const endDate = new Date(end as string).toISOString();
+            const startDate = new Date(start as string);
+            const endDate = new Date(end as string);
 
-            const discountUsage = await this.transactionDao.getDiscountUsage(startDate, endDate);
+            if (endDate < startDate) throw new Error('End date must be greater than start date');
+
+            const discountUsage = await this.transactionDao.getDiscountUsage(startDate.toISOString(), endDate.toISOString());
 
             res.status(200).json({
                 start: startDate,
@@ -83,10 +91,12 @@ export class TransactionController {
     getLoyaltyUsage = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { start, end } = req.query;
-            const startDate = new Date(start as string).toISOString();
-            const endDate = new Date(end as string).toISOString();
+            const startDate = new Date(start as string);
+            const endDate = new Date(end as string);
 
-            const loyaltyUsage = await this.transactionDao.getLoyaltyUsage(startDate, endDate);
+            if (endDate < startDate) throw new Error('End date must be greater than start date');
+
+            const loyaltyUsage = await this.transactionDao.getLoyaltyUsage(startDate.toISOString(), endDate.toISOString());
 
             res.status(200).json({
                 start: startDate,
